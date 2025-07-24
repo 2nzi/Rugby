@@ -5,3 +5,8 @@ matplotlib
 mplsoccer
 python-dotenv
 openpyxl
+streamlit
+plotly
+seaborn
+fuzzywuzzy
+python-levenshtein

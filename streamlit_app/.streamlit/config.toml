@@ -1,0 +1,18 @@
+[browser]
+showErrorDetails = false
+
+[client]
+showErrorDetails = false
+
+[server]
+runOnSave = true
+
+# Désactiver certains éléments
+[theme]
+primaryColor = "#1f4e79"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f8ff"
+textColor = "#000000"
+
+[ui]
+hideTopBar = true
