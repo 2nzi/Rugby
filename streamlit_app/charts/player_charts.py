@@ -100,7 +100,7 @@ def create_player_level_distribution(df, player_name):
     
     level_data = player_data.groupby('Niveau')['Nb_actions'].sum().reset_index()
     level_data['Niveau_label'] = level_data['Niveau'].map({
-        0: 'Basique', 1: 'Correct', 2: 'Bon', 3: 'Excellent'
+        0: '0', 1: '1', 2: '2', 3: '3'
     })
     
     fig = px.bar(
@@ -239,7 +239,6 @@ def create_performance_heatmap(df, n_players=15):
     
     # Personnaliser le hover
     fig.update_traces(
-        hovertemplate='<b>%{y}</b><br>Match: %{x}<br>Actions: %{z}<extra></extra>',
         hoverlabel=dict(
             bgcolor=COLORS['primary'],
             font_color='white',
@@ -257,7 +256,7 @@ def create_team_activity_heatmap(df):
     heatmap_pivot = heatmap_data.pivot(index='Action', columns='Niveau', values='Nb_actions').fillna(0)
     
     # Renommer les colonnes pour plus de clarté
-    level_labels = {0: 'Basique', 1: 'Correct', 2: 'Bon', 3: 'Excellent'}
+    level_labels = {0: '0', 1: '1', 2: '2', 3: '3'}
     heatmap_pivot.columns = [level_labels.get(col, f'Niveau {col}') for col in heatmap_pivot.columns]
     
     fig = px.imshow(
@@ -280,17 +279,16 @@ def create_team_activity_heatmap(df):
             'xanchor': 'center'
         },
         xaxis={
-            # 'title': 'Niveau de qualité',
+            'title': '',
             'tickfont': dict(color=COLORS['secondary'], size=11)
         },
         yaxis={
-            # 'title': 'Type d\'action',
+            'title': '',
             'tickfont': dict(color=COLORS['secondary'], size=11)
         }
     )
     
     fig.update_traces(
-        hovertemplate='<b>%{y}</b><br>Niveau: %{x}<br>Actions: %{z}<extra></extra>',
         hoverlabel=dict(
             bgcolor=COLORS['primary'],
             font_color='white',
