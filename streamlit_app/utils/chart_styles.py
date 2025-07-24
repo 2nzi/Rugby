@@ -40,11 +40,9 @@ def apply_stade_style(fig, title=None):
         
         # Barre de couleur
         coloraxis_colorbar=dict(
-            title=dict(text="Intensité", font=dict(color=STADE_COLORS['primary'], size=12)),
             tickfont=dict(color=STADE_COLORS['secondary'], size=10),
             bgcolor='rgba(255,255,255,0.8)',
-            bordercolor=STADE_COLORS['primary'],
-            borderwidth=1
+            # bordercolor=STADE_COLORS['primary'],
         )
     )
     

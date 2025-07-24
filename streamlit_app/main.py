@@ -9,8 +9,8 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 # Configuration de la page
 st.set_page_config(
-    page_title="U18 Stade Toulousain Féminine",
-    page_icon="./assets/Logo_Stade_Toulousain_Rugby.png",
+    page_title="Analyse Rugby - Équipe Féminine",
+    page_icon="🏉",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -29,9 +29,12 @@ from components.technical_stats import show_technical_stats
 from utils.data_loader import load_data, get_database_stats
 
 def main():
-    # Titre principal avec logo
-    create_rugby_title("U18 Stade Toulousain Féminine")
-        
+    # Titre principal
+    create_rugby_title("🏉 U18 Stade Toulousain Féminine")
+    
+    # Sidebar pour la navigation
+    st.sidebar.title("Navigation")
+    
     # Charger les données
     try:
         df = load_data()
@@ -51,21 +54,21 @@ def main():
     page = st.sidebar.selectbox(
         "Choisir une analyse",
         [
-            "Tableau de bord",
-            "Analyse par joueuse", 
-            "Comparaison des matchs",
-            "Statistiques techniques"
+            "🏠 Tableau de bord",
+            "👤 Analyse par joueuse", 
+            "⚔️ Comparaison des matchs",
+            "📈 Statistiques techniques"
         ]
     )
     
     # Affichage des pages
-    if page == "Tableau de bord":
+    if page == "🏠 Tableau de bord":
         show_dashboard(df)
-    elif page == "Analyse par joueuse":
+    elif page == "👤 Analyse par joueuse":
         show_player_analysis(df)
-    elif page == "Comparaison des matchs":
+    elif page == "⚔️ Comparaison des matchs":
         show_match_comparison(df)
-    elif page == "Statistiques techniques":
+    elif page == "📈 Statistiques techniques":
         show_technical_stats(df)
 
 if __name__ == "__main__":

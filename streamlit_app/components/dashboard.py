@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from charts import create_top_players_chart, create_matches_ranking_chart
+from charts import create_top_players_chart, create_actions_distribution_chart, create_matches_activity_chart
 
 def show_dashboard(df):
     """Affiche le tableau de bord principal"""
@@ -35,70 +35,37 @@ def show_dashboard(df):
     col1, col2 = st.columns(2)
     
     with col1:
-        # UTILISATION SIMPLE DU GRAPHIQUE
+        # USAGE ULTRA-SIMPLE
         fig = create_top_players_chart(df, n_players=10)
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        st.subheader("⚽ Répartition des actions")
-        action_stats = df.groupby('Action')['Nb_actions'].sum().reset_index()
-        
-        fig = px.pie(
-            action_stats, 
-            values='Nb_actions', 
-            names='Action',
-            title="Distribution des types d'actions"
-        )
-        fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
-    
-    st.divider()
-    
-    # Analyse par niveau de performance
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.subheader("📈 Performance par niveau")
-        niveau_stats = df.groupby('Niveau')['Nb_actions'].sum().reset_index()
-        niveau_stats['Niveau_label'] = niveau_stats['Niveau'].map({
-            0: 'Niveau 0 (Basique)',
-            1: 'Niveau 1 (Correct)', 
-            2: 'Niveau 2 (Bon)',
-            3: 'Niveau 3 (Excellent)'
-        })
-        
-        fig = px.bar(
-            niveau_stats,
-            x='Niveau_label',
-            y='Nb_actions',
-            title="Nombre d'actions par niveau de qualité",
-            color='Niveau',
-            color_continuous_scale='RdYlGn'
-        )
-        st.plotly_chart(fig, use_container_width=True)
-    
-    with col2:
-        st.subheader("🏉 Performance par match")
         # AUTRE GRAPHIQUE
-        fig = create_matches_ranking_chart(df)
+        fig = create_actions_distribution_chart(df)
         st.plotly_chart(fig, use_container_width=True)
     
-    # Heatmap des performances
-    st.subheader("🔥 Carte de chaleur : Actions par joueuse et match")
+    col3, col4 = st.columns(2)
+
+    with col3:
+        # Graphique pleine largeur
+        fig = create_matches_activity_chart(df)
+        st.plotly_chart(fig, use_container_width=True)
     
-    # Préparer les données pour la heatmap
-    heatmap_data = df.groupby(['Nom', 'Match'])['Nb_actions'].sum().reset_index()
-    heatmap_pivot = heatmap_data.pivot(index='Nom', columns='Match', values='Nb_actions').fillna(0)
-    
-    # Limiter aux 15 meilleures joueuses pour la lisibilité
-    top_15_players = df.groupby('Nom')['Nb_actions'].sum().nlargest(15).index
-    heatmap_pivot = heatmap_pivot.loc[top_15_players]
-    
-    fig = px.imshow(
-        heatmap_pivot,
-        aspect='auto',
-        title="Intensité d'activité par joueuse et match",
-        color_continuous_scale='Blues'
-    )
-    fig.update_layout(height=600)
-    st.plotly_chart(fig, use_container_width=True)
+    with col4:
+        # Heatmap des performances
+        # Préparer les données pour la heatmap
+        heatmap_data = df.groupby(['Nom', 'Match'])['Nb_actions'].sum().reset_index()
+        heatmap_pivot = heatmap_data.pivot(index='Nom', columns='Match', values='Nb_actions').fillna(0)
+        
+        # Limiter aux 15 meilleures joueuses pour la lisibilité
+        top_15_players = df.groupby('Nom')['Nb_actions'].sum().nlargest(15).index
+        heatmap_pivot = heatmap_pivot.loc[top_15_players]
+        
+        fig = px.imshow(
+            heatmap_pivot,
+            aspect='auto',
+            title="Intensité d'activité par joueuse et match",
+            color_continuous_scale='Blues'
+        )
+        fig.update_layout(height=600)
+        st.plotly_chart(fig, use_container_width=True)
