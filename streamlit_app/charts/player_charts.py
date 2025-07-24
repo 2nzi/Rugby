@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from .config import COLORS, COLORSCALE, BASE_LAYOUT
+from .config import COLORS, COLORSCALE, COLORSCALE_HEATMAP, BASE_LAYOUT, apply_stade_style
 
 def create_top_players_chart(df, n_players=10):
     """Graphique complet du top des joueuses avec style intégré"""
@@ -189,5 +189,161 @@ def create_player_comparison_radar(df, players_list):
     )
     
     fig.update_layout(**BASE_LAYOUT)
+    
+    return fig
+
+def create_performance_heatmap(df, n_players=15):
+    """Heatmap des performances - BLANC -> ROUGE uniquement"""
+    
+    # Préparer les données pour la heatmap
+    heatmap_data = df.groupby(['Nom', 'Match'])['Nb_actions'].sum().reset_index()
+    heatmap_pivot = heatmap_data.pivot(index='Nom', columns='Match', values='Nb_actions').fillna(0)
+    
+    # Limiter aux meilleures joueuses pour la lisibilité
+    top_players = df.groupby('Nom')['Nb_actions'].sum().nlargest(n_players).index
+    heatmap_pivot = heatmap_pivot.loc[top_players]
+    
+    # Créer la heatmap avec BLANC -> ROUGE ← CHANGEMENT ICI
+    fig = px.imshow(
+        heatmap_pivot,
+        aspect='auto',
+        title=f"Intensité d'activité - Top {n_players}",
+        color_continuous_scale=COLORSCALE_HEATMAP,  # ← BLANC -> ROUGE
+        labels={'color': 'Nb actions'}
+    )
+    
+    # ENLEVER LA COLORSCALE LEGEND
+    fig.update_traces(showscale=False)
+    
+    # Appliquer le style Stade Toulousain
+    fig.update_layout(
+        **BASE_LAYOUT,
+        height=600,
+        coloraxis_showscale=False,
+        title={
+            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'x': 0.5,
+            'xanchor': 'center'
+        },
+        # Style des axes
+        xaxis={
+            'title': 'Matchs',
+            'tickfont': dict(color=COLORS['secondary'], size=10),
+            'tickangle': 45  # Incliner les noms de matchs pour la lisibilité
+        },
+        yaxis={
+            'title': 'Joueuses',
+            'tickfont': dict(color=COLORS['secondary'], size=10)
+        }
+    )
+    
+    # Personnaliser le hover
+    fig.update_traces(
+        hovertemplate='<b>%{y}</b><br>Match: %{x}<br>Actions: %{z}<extra></extra>',
+        hoverlabel=dict(
+            bgcolor=COLORS['primary'],
+            font_color='white',
+            font_size=12
+        )
+    )
+    
+    return fig
+
+def create_team_activity_heatmap(df):
+    """Heatmap par action/niveau - BLANC -> ROUGE uniquement"""
+    
+    # Préparer les données : Actions vs Niveaux
+    heatmap_data = df.groupby(['Action', 'Niveau'])['Nb_actions'].sum().reset_index()
+    heatmap_pivot = heatmap_data.pivot(index='Action', columns='Niveau', values='Nb_actions').fillna(0)
+    
+    # Renommer les colonnes pour plus de clarté
+    level_labels = {0: 'Basique', 1: 'Correct', 2: 'Bon', 3: 'Excellent'}
+    heatmap_pivot.columns = [level_labels.get(col, f'Niveau {col}') for col in heatmap_pivot.columns]
+    
+    fig = px.imshow(
+        heatmap_pivot,
+        aspect='auto',
+        title="Intensité par action et niveau",
+        color_continuous_scale=COLORSCALE_HEATMAP
+    )
+    
+    # Style Stade Toulousain
+    fig.update_traces(showscale=False)
+    
+    fig.update_layout(
+        **BASE_LAYOUT,
+        height=400,
+        coloraxis_showscale=False,
+        title={
+            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'x': 0.6,
+            'xanchor': 'center'
+        },
+        xaxis={
+            # 'title': 'Niveau de qualité',
+            'tickfont': dict(color=COLORS['secondary'], size=11)
+        },
+        yaxis={
+            # 'title': 'Type d\'action',
+            'tickfont': dict(color=COLORS['secondary'], size=11)
+        }
+    )
+    
+    fig.update_traces(
+        hovertemplate='<b>%{y}</b><br>Niveau: %{x}<br>Actions: %{z}<extra></extra>',
+        hoverlabel=dict(
+            bgcolor=COLORS['primary'],
+            font_color='white',
+            font_size=12
+        )
+    )
+    
+    return fig
+
+def create_performance_heatmap_advanced(df, n_players=15, match_filter=None, colorscale_type='stade'):
+    """Heatmap avancée avec options"""
+    
+    # Filtrer par matchs si spécifié
+    if match_filter:
+        df_filtered = df[df['Match'].isin(match_filter)]
+    else:
+        df_filtered = df
+    
+    # Préparer les données
+    heatmap_data = df_filtered.groupby(['Nom', 'Match'])['Nb_actions'].sum().reset_index()
+    heatmap_pivot = heatmap_data.pivot(index='Nom', columns='Match', values='Nb_actions').fillna(0)
+    
+    # Top joueuses
+    top_players = df_filtered.groupby('Nom')['Nb_actions'].sum().nlargest(n_players).index
+    heatmap_pivot = heatmap_pivot.loc[top_players]
+    
+    # Choisir la colorscale
+    if colorscale_type == 'stade':
+        colorscale = COLORSCALE
+    elif colorscale_type == 'reversed':
+        colorscale = [[0, COLORS['primary']], [1, COLORS['secondary']]]
+    else:
+        colorscale = COLORSCALE
+    
+    fig = px.imshow(
+        heatmap_pivot,
+        aspect='auto',
+        title=f"Heatmap personnalisée - {len(heatmap_pivot.index)} joueuses",
+        color_continuous_scale=colorscale
+    )
+    
+    # Style
+    fig.update_traces(showscale=False)
+    
+    fig.update_layout(
+        **BASE_LAYOUT,
+        coloraxis_showscale=False,
+        height=500,
+        title={
+            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'x': 0.5,
+            'xanchor': 'center'
+        }
+    )
     
     return fig

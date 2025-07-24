@@ -30,7 +30,7 @@ from utils.data_loader import load_data, get_database_stats
 
 def main():
     # Titre principal
-    create_rugby_title("🏉 U18 Stade Toulousain Féminine")
+    create_rugby_title("U18 Stade Toulousain Féminine")
     
     # Sidebar pour la navigation
     st.sidebar.title("Navigation")

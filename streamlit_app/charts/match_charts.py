@@ -63,7 +63,7 @@ def create_actions_distribution_chart(df):
         **BASE_LAYOUT,
         title={
             'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
-            'x': 0.5,
+            'x': 0.4,
             'xanchor': 'center'
         }
     )

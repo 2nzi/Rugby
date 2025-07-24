@@ -3,12 +3,18 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from charts import create_top_players_chart, create_actions_distribution_chart, create_matches_activity_chart
+from charts import (
+    create_top_players_chart, 
+    create_actions_distribution_chart, 
+    create_matches_activity_chart,
+    create_performance_heatmap,        # ← NOUVEAU
+    create_team_activity_heatmap       # ← NOUVEAU
+)
 
 def show_dashboard(df):
     """Affiche le tableau de bord principal"""
-    
-    st.header("🏠 Tableau de bord général")
+        
+    st.divider()
     
     # Métriques générales
     col1, col2, col3, col4 = st.columns(4)
@@ -35,37 +41,27 @@ def show_dashboard(df):
     col1, col2 = st.columns(2)
     
     with col1:
-        # USAGE ULTRA-SIMPLE
         fig = create_top_players_chart(df, n_players=10)
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        # AUTRE GRAPHIQUE
         fig = create_actions_distribution_chart(df)
         st.plotly_chart(fig, use_container_width=True)
     
-    col3, col4 = st.columns(2)
-
-    with col3:
-        # Graphique pleine largeur
+    st.divider()
+    
+    # Graphiques pleine largeur
+    col1, col2 = st.columns(2)
+    
+    with col1:
         fig = create_matches_activity_chart(df)
         st.plotly_chart(fig, use_container_width=True)
     
-    with col4:
-        # Heatmap des performances
-        # Préparer les données pour la heatmap
-        heatmap_data = df.groupby(['Nom', 'Match'])['Nb_actions'].sum().reset_index()
-        heatmap_pivot = heatmap_data.pivot(index='Nom', columns='Match', values='Nb_actions').fillna(0)
-        
-        # Limiter aux 15 meilleures joueuses pour la lisibilité
-        top_15_players = df.groupby('Nom')['Nb_actions'].sum().nlargest(15).index
-        heatmap_pivot = heatmap_pivot.loc[top_15_players]
-        
-        fig = px.imshow(
-            heatmap_pivot,
-            aspect='auto',
-            title="Intensité d'activité par joueuse et match",
-            color_continuous_scale='Blues'
-        )
-        fig.update_layout(height=600)
+    with col2:
+        fig = create_team_activity_heatmap(df)
         st.plotly_chart(fig, use_container_width=True)
+    
+    st.divider()
+
+    fig = create_performance_heatmap(df, n_players=15)
+    st.plotly_chart(fig, use_container_width=True)
