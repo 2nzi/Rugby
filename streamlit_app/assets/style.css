@@ -1,0 +1,187 @@
+/* ===============================
+   STREAMLIT UI CLEANUP
+   =============================== */
+
+/* Supprimer la barre supérieure complète */
+header[data-testid="stHeader"] {
+    display: none;
+}
+
+/* Supprimer le footer */
+footer {
+    display: none;
+}
+
+/* Supprimer le menu hamburger */
+#MainMenu {
+    display: none;
+}
+
+/* ===============================
+   PADDING ET SPACING PERSONNALISÉS
+   =============================== */
+
+/* Votre padding spécifique - MODIFIABLE ICI */
+.st-emotion-cache-1jicfl2 {
+    width: 100%;
+    padding: 2rem 1rem 2rem !important;  /* Réduire de 6rem à 2rem */
+    min-width: auto;
+    max-width: initial;
+}
+
+/* Réduire l'espacement général en haut */
+.stAppViewContainer .main .block-container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Espacement pour le contenu principal */
+.main .block-container {
+    padding: 1rem 2rem;
+}
+
+/* ===============================
+   STYLES POUR L'APPLICATION RUGBY
+   =============================== */
+
+/* Titre principal */
+.main-header {
+    font-size: 2.5rem;
+    color: #CC0C13;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #000000;
+    padding-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Logo et header combinés */
+.rugby-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.rugby-header img {
+    height: 60px;
+    width: auto;
+}
+
+/* Cartes métriques */
+.metric-card {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 5px solid #1f4e79;
+    margin: 0.5rem 0;
+    box-shadow: 0 2px 10px rgba(31, 78, 121, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(31, 78, 121, 0.15);
+}
+
+/* ===============================
+   SIDEBAR PERSONNALISÉE
+   =============================== */
+
+/* Style pour la sidebar */
+.css-1d391kg {
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Titres dans la sidebar */
+.css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3 {
+    color: #1f4e79;
+    font-weight: bold;
+}
+
+/* ===============================
+   COMPOSANTS STREAMLIT
+   =============================== */
+
+/* Style pour les selectbox */
+.stSelectbox > div > div {
+    border: 2px solid #1f4e79;
+    border-radius: 10px;
+}
+
+/* Style pour les métriques Streamlit */
+[data-testid="metric-container"] {
+    background: white;
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Tables et dataframes */
+.stDataFrame {
+    border: none;
+}
+
+.stDataFrame > div {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ===============================
+   BOUTONS PERSONNALISÉS
+   =============================== */
+
+.stButton > button {
+    background: linear-gradient(135deg, #1f4e79 0%, #2d5a8b 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(31, 78, 121, 0.3);
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+
+@media (max-width: 768px) {
+    .main-header {
+        font-size: 2rem;
+    }
+    
+    .st-emotion-cache-1jicfl2 {
+        padding: 1rem 0.5rem 1rem !important;
+    }
+    
+    .rugby-header {
+        flex-direction: column;
+    }
+}
+
+/* ===============================
+   CLASSES UTILITAIRES
+   =============================== */
+
+.text-center {
+    text-align: center;
+}
+
+.text-rugby {
+    color: #1f4e79;
+}
+
+.bg-rugby {
+    background-color: #f0f8ff;
+}
+
+.border-rugby {
+    border: 2px solid #1f4e79;
+}

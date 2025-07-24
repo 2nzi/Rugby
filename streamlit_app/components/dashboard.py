@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from charts import create_top_players_chart, create_matches_ranking_chart
 
 def show_dashboard(df):
     """Affiche le tableau de bord principal"""
@@ -34,21 +35,8 @@ def show_dashboard(df):
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("🏆 Top 10 des joueuses")
-        top_players = df.groupby(['Prenom', 'Nom'])['Nb_actions'].sum().reset_index()
-        top_players['Nom_complet'] = top_players['Prenom'] + ' ' + top_players['Nom']
-        top_players = top_players.nlargest(10, 'Nb_actions')
-        
-        fig = px.bar(
-            top_players, 
-            x='Nb_actions', 
-            y='Nom_complet',
-            orientation='h',
-            title="Nombre total d'actions par joueuse",
-            color='Nb_actions',
-            color_continuous_scale='Blues'
-        )
-        fig.update_layout(height=400, yaxis={'categoryorder':'total ascending'})
+        # UTILISATION SIMPLE DU GRAPHIQUE
+        fig = create_top_players_chart(df, n_players=10)
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
@@ -91,19 +79,8 @@ def show_dashboard(df):
     
     with col2:
         st.subheader("🏉 Performance par match")
-        match_stats = df.groupby('Match')['Nb_actions'].sum().reset_index()
-        match_stats = match_stats.sort_values('Nb_actions', ascending=True)
-        
-        fig = px.bar(
-            match_stats,
-            x='Nb_actions',
-            y='Match',
-            orientation='h',
-            title="Total d'actions par match",
-            color='Nb_actions',
-            color_continuous_scale='Oranges'
-        )
-        fig.update_layout(height=500, yaxis={'categoryorder':'total ascending'})
+        # AUTRE GRAPHIQUE
+        fig = create_matches_ranking_chart(df)
         st.plotly_chart(fig, use_container_width=True)
     
     # Heatmap des performances
