@@ -37,7 +37,7 @@ def create_matches_activity_chart(df):
             'tickfont': dict(color=COLORS['secondary'], size=11)
         },
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.5,
             'xanchor': 'center'
         }
@@ -62,7 +62,7 @@ def create_actions_distribution_chart(df):
     fig.update_layout(
         **BASE_LAYOUT,
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.4,
             'xanchor': 'center'
         }

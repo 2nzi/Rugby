@@ -37,7 +37,7 @@ def create_top_players_chart(df, n_players=10):
             'tickfont': dict(color=COLORS['secondary'], size=11)
         },
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.5,
             'xanchor': 'center'
         }
@@ -77,7 +77,7 @@ def create_player_actions_pie(df, player_name):
     fig.update_layout(
         **BASE_LAYOUT,
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.5,
             'xanchor': 'center'
         }
@@ -117,7 +117,7 @@ def create_player_level_distribution(df, player_name):
         xaxis={'title': 'Niveau de performance'},
         yaxis={'title': 'Nombre d\'actions'},
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.5,
             'xanchor': 'center'
         }
@@ -221,7 +221,7 @@ def create_performance_heatmap(df, n_players=15):
         height=600,
         coloraxis_showscale=False,
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.5,
             'xanchor': 'center'
         },
@@ -274,7 +274,7 @@ def create_team_activity_heatmap(df):
         height=400,
         coloraxis_showscale=False,
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.6,
             'xanchor': 'center'
         },
@@ -338,7 +338,7 @@ def create_performance_heatmap_advanced(df, n_players=15, match_filter=None, col
         coloraxis_showscale=False,
         height=500,
         title={
-            'font': dict(color=COLORS['primary'], size=16, family='Arial Black'),
+            'font': dict(color=COLORS['secondary'], size=16, family='Arial Black'),
             'x': 0.5,
             'xanchor': 'center'
         }
