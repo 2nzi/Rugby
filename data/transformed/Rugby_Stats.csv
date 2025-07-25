@@ -212,6 +212,11 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 15,Zoe,Pages,PAU I,RECEPTION JAP,3.0,2.0
 17,Justine,Pradel,PAU I,RECEPTION JAP,3.0,1.0
 22,Eva,Sundheimer,PAU I,RECEPTION JAP,3.0,1.0
+2,Arwen,Lavuia,PAU I,EN AVANTS,,1.0
+6,Elsa,Moutinho,PAU I,EN AVANTS,,1.0
+8,Adèle,Lachurie,PAU I,EN AVANTS,,1.0
+10,Alice,Bouvet,PAU I,EN AVANTS,,2.0
+13,Mado,Bidard,PAU I,EN AVANTS,,2.0
 1,Cléa,Vauloup,PAU I,PENALITE,,2.0
 2,Arwen,Lavuia,PAU I,PENALITE,,1.0
 3,Manon,Marchesin,PAU I,PENALITE,,2.0
@@ -450,6 +455,17 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 14,Alessia,Coste,COLOMIERS I,RECEPTION JAP,3.0,4.0
 15,Jade,Guindé,COLOMIERS I,RECEPTION JAP,3.0,2.0
 20,Alexia,Cazalbou,COLOMIERS I,RECEPTION JAP,3.0,1.0
+1,Justine,Pradel,COLOMIERS I,EN AVANTS,,1.0
+2,Arwen,Lavuia,COLOMIERS I,EN AVANTS,,3.0
+3,Manon,Marchesin,COLOMIERS I,EN AVANTS,,1.0
+7,Elsa,Moutinho,COLOMIERS I,EN AVANTS,,2.0
+8,Lise,Llach,COLOMIERS I,EN AVANTS,,1.0
+13,Jeanne,Beheregaray,COLOMIERS I,EN AVANTS,,1.0
+14,Alessia,Coste,COLOMIERS I,EN AVANTS,,2.0
+15,Jade,Guindé,COLOMIERS I,EN AVANTS,,1.0
+16,Eva,Ould-Hadda,COLOMIERS I,EN AVANTS,,1.0
+19,Sofaia,Fono,COLOMIERS I,EN AVANTS,,1.0
+20,Alexia,Cazalbou,COLOMIERS I,EN AVANTS,,1.0
 1,Justine,Pradel,COLOMIERS I,PENALITE,,3.0
 2,Arwen,Lavuia,COLOMIERS I,PENALITE,,1.0
 4,Adèle,Lachurie,COLOMIERS I,PENALITE,,2.0
@@ -681,6 +697,14 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 14,Charlotte,Quilici,BLAGNAC I,RECEPTION JAP,3.0,2.0
 15,Jade,Guindé,BLAGNAC I,RECEPTION JAP,3.0,2.0
 20,Alexia,Cazalbou,BLAGNAC I,RECEPTION JAP,3.0,1.0
+1,Manon,Marchesin,BLAGNAC I,EN AVANTS,,2.0
+3,Malia,Taofifenua,BLAGNAC I,EN AVANTS,,1.0
+7,Lise,Llach,BLAGNAC I,EN AVANTS,,2.0
+10,Heloïse,Seletti,BLAGNAC I,EN AVANTS,,2.0
+15,Jade,Guindé,BLAGNAC I,EN AVANTS,,1.0
+16,Lizea,Subra,BLAGNAC I,EN AVANTS,,1.0
+18,Elsa,Moutinho,BLAGNAC I,EN AVANTS,,1.0
+19,Agathe,Lacaze,BLAGNAC I,EN AVANTS,,1.0
 1,Manon,Marchesin,BLAGNAC I,PENALITE,,2.0
 2,Arwen,Lavuia,BLAGNAC I,PENALITE,,2.0
 3,Malia,Taofifenua,BLAGNAC I,PENALITE,,1.0
@@ -899,6 +923,15 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 17,Lizea,Subra,AGEN I,RECEPTION JAP,3.0,1.0
 21,Mado,Bidard,AGEN I,RECEPTION JAP,3.0,1.0
 23,Justine,Pradel,AGEN I,RECEPTION JAP,3.0,1.0
+1,Manon,Marchesin,AGEN I,EN AVANTS,,1.0
+3,Malia,Taofifenua,AGEN I,EN AVANTS,,2.0
+10,Heloïse,Seletti,AGEN I,EN AVANTS,,3.0
+11,Alessia,Coste,AGEN I,EN AVANTS,,1.0
+12,Maelys,Onillon,AGEN I,EN AVANTS,,1.0
+15,Jade,Guindé,AGEN I,EN AVANTS,,1.0
+16,Thiziri-Jades,Touabi,AGEN I,EN AVANTS,,1.0
+21,Mado,Bidard,AGEN I,EN AVANTS,,2.0
+22,Charlotte,Quilici,AGEN I,EN AVANTS,,1.0
 1,Manon,Marchesin,AGEN I,PENALITE,,1.0
 2,Arwen,Lavuia,AGEN I,PENALITE,,1.0
 3,Malia,Taofifenua,AGEN I,PENALITE,,1.0
@@ -1127,6 +1160,18 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 21,Chiara,Muratet,CASTRES I,RECEPTION JAP,3.0,1.0
 22,Charlotte,Quilici,CASTRES I,RECEPTION JAP,3.0,1.0
 23,Candice,Barret,CASTRES I,RECEPTION JAP,3.0,1.0
+1,Justine,Pradel,CASTRES I,EN AVANTS,,1.0
+2,Lizea,Subra,CASTRES I,EN AVANTS,,2.0
+4,Elea,Marzura,CASTRES I,EN AVANTS,,1.0
+5,Sofaia,Fono,CASTRES I,EN AVANTS,,2.0
+8,Agathe,Lacaze,CASTRES I,EN AVANTS,,1.0
+9,Lou,Cambus,CASTRES I,EN AVANTS,,3.0
+11,Keona,Aveilla,CASTRES I,EN AVANTS,,1.0
+13,Mado,Bidard,CASTRES I,EN AVANTS,,3.0
+14,Eva,Sundheimer,CASTRES I,EN AVANTS,,1.0
+16,Doriane,Crassous,CASTRES I,EN AVANTS,,1.0
+18,Sara-Lyna,Makouf,CASTRES I,EN AVANTS,,3.0
+19,Maelle,Bonne,CASTRES I,EN AVANTS,,1.0
 2,Lizea,Subra,CASTRES I,PENALITE,,1.0
 5,Sofaia,Fono,CASTRES I,PENALITE,,1.0
 7,Thiziri-Jades,Touabi,CASTRES I,PENALITE,,1.0
@@ -1356,6 +1401,17 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 14,Chiara,Muratet,BAYONNE I,RECEPTION JAP,3.0,1.0
 15,Jade,Guindé,BAYONNE I,RECEPTION JAP,3.0,4.0
 22,Alessia,Coste,BAYONNE I,RECEPTION JAP,3.0,2.0
+4,Eva,Ould-Hadda,BAYONNE I,EN AVANTS,,1.0
+5,Candice,Barret,BAYONNE I,EN AVANTS,,3.0
+9,Alexia,Cazalbou,BAYONNE I,EN AVANTS,,2.0
+10,Heloïse,Seletti,BAYONNE I,EN AVANTS,,1.0
+11,Mado,Bidard,BAYONNE I,EN AVANTS,,2.0
+13,Jeanne,Beheregaray,BAYONNE I,EN AVANTS,,1.0
+14,Chiara,Muratet,BAYONNE I,EN AVANTS,,1.0
+18,Sara-Lyna,Makouf,BAYONNE I,EN AVANTS,,2.0
+20,Alice,Henaux,BAYONNE I,EN AVANTS,,1.0
+22,Alessia,Coste,BAYONNE I,EN AVANTS,,2.0
+23,Lisa,Montoux,BAYONNE I,EN AVANTS,,1.0
 2,Mathilde,Lacombre,BAYONNE I,PENALITE,,1.0
 5,Candice,Barret,BAYONNE I,PENALITE,,2.0
 9,Alexia,Cazalbou,BAYONNE I,PENALITE,,1.0
@@ -1558,6 +1614,13 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 13,Maelle,Bonne,AURILLAC I,RECEPTION JAP,3.0,1.0
 18,Moea,Lickel,AURILLAC I,RECEPTION JAP,3.0,1.0
 22,Pauline,Joigneaux,AURILLAC I,RECEPTION JAP,3.0,1.0
+3,Lizea,Subra,AURILLAC I,EN AVANTS,,2.0
+4,Sofaia,Fono,AURILLAC I,EN AVANTS,,1.0
+6,Zoe,Toustou,AURILLAC I,EN AVANTS,,1.0
+8,Sara-Lyna,Makouf,AURILLAC I,EN AVANTS,,3.0
+9,Lou,Cambus,AURILLAC I,EN AVANTS,,4.0
+10,Alexia,Cazalbou,AURILLAC I,EN AVANTS,,2.0
+12,Alice,Bouvet,AURILLAC I,EN AVANTS,,1.0
 2,Doriane,Crassous,AURILLAC I,PENALITE,,1.0
 3,Lizea,Subra,AURILLAC I,PENALITE,,1.0
 4,Sofaia,Fono,AURILLAC I,PENALITE,,2.0
@@ -1771,6 +1834,17 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 15,Alessia,Coste,PAU II,RECEPTION JAP,3.0,2.0
 17,Agathe,Lacaze,PAU II,RECEPTION JAP,3.0,1.0
 22,Keona,Aveilla,PAU II,RECEPTION JAP,3.0,1.0
+2,Arwen,Lavuia,PAU II,EN AVANTS,,1.0
+4,Adèle,Lachurie,PAU II,EN AVANTS,,1.0
+5,Candice,Barret,PAU II,EN AVANTS,,1.0
+8,Lise,Llach,PAU II,EN AVANTS,,3.0
+9,Alice,Henaux,PAU II,EN AVANTS,,1.0
+10,Heloïse,Seletti,PAU II,EN AVANTS,,1.0
+14,Zoe,Toustou,PAU II,EN AVANTS,,1.0
+15,Alessia,Coste,PAU II,EN AVANTS,,1.0
+18,Sara-Lyna,Makouf,PAU II,EN AVANTS,,1.0
+22,Keona,Aveilla,PAU II,EN AVANTS,,1.0
+23,Malia,Taofifenua,PAU II,EN AVANTS,,1.0
 1,Manon,Marchesin,PAU II,PENALITE,,1.0
 2,Arwen,Lavuia,PAU II,PENALITE,,1.0
 3,Cléa,Vauloup,PAU II,PENALITE,,2.0
@@ -1991,6 +2065,20 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 9,Alexia,Cazalbou,COLOMIERS II,RECEPTION JAP,3.0,2.0
 12,Maelys,Onillon,COLOMIERS II,RECEPTION JAP,3.0,2.0
 15,Alessia,Coste,COLOMIERS II,RECEPTION JAP,3.0,1.0
+1,Cléa,Vauloup,COLOMIERS II,EN AVANTS,,3.0
+2,Manon,Marchesin,COLOMIERS II,EN AVANTS,,1.0
+4,Adèle,Lachurie,COLOMIERS II,EN AVANTS,,1.0
+5,Sara-Lyna,Makouf,COLOMIERS II,EN AVANTS,,1.0
+6,Moea,Lickel,COLOMIERS II,EN AVANTS,,2.0
+7,Agathe,Lacaze,COLOMIERS II,EN AVANTS,,1.0
+8,Lise,Llach,COLOMIERS II,EN AVANTS,,1.0
+10,Heloïse,Seletti,COLOMIERS II,EN AVANTS,,1.0
+11,Eva,Sundheimer,COLOMIERS II,EN AVANTS,,3.0
+12,Maelys,Onillon,COLOMIERS II,EN AVANTS,,1.0
+14,Mado,Bidard,COLOMIERS II,EN AVANTS,,1.0
+16,Arwen,Lavuia,COLOMIERS II,EN AVANTS,,1.0
+19,Zoe,Toustou,COLOMIERS II,EN AVANTS,,1.0
+21,Alice,Bouvet,COLOMIERS II,EN AVANTS,,1.0
 1,Cléa,Vauloup,COLOMIERS II,PENALITE,,2.0
 3,Malia,Taofifenua,COLOMIERS II,PENALITE,,1.0
 4,Adèle,Lachurie,COLOMIERS II,PENALITE,,1.0
@@ -2220,6 +2308,18 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 15,Jade,Guindé,BLAGNAC II,RECEPTION JAP,3.0,2.0
 17,Elea,Marzura,BLAGNAC II,RECEPTION JAP,3.0,1.0
 21,Mado,Bidard,BLAGNAC II,RECEPTION JAP,3.0,2.0
+2,Mathilde,Lacombre,BLAGNAC II,EN AVANTS,,1.0
+3,Eva,Ould-Hadda,BLAGNAC II,EN AVANTS,,1.0
+4,Sofaia,Fono,BLAGNAC II,EN AVANTS,,1.0
+5,Sara-Lyna,Makouf,BLAGNAC II,EN AVANTS,,3.0
+7,Thiziri-Jades,Touabi,BLAGNAC II,EN AVANTS,,2.0
+9,Lou,Cambus,BLAGNAC II,EN AVANTS,,1.0
+10,Alice,Bouvet,BLAGNAC II,EN AVANTS,,2.0
+12,Pauline,Joigneaux,BLAGNAC II,EN AVANTS,,2.0
+15,Jade,Guindé,BLAGNAC II,EN AVANTS,,1.0
+19,Agathe,Lacaze,BLAGNAC II,EN AVANTS,,1.0
+20,Jeanne,Beheregaray,BLAGNAC II,EN AVANTS,,1.0
+21,Mado,Bidard,BLAGNAC II,EN AVANTS,,2.0
 1,Justine,Pradel,BLAGNAC II,PENALITE,,1.0
 2,Mathilde,Lacombre,BLAGNAC II,PENALITE,,1.0
 5,Sara-Lyna,Makouf,BLAGNAC II,PENALITE,,4.0
@@ -2430,6 +2530,16 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 8,Lise,Llach,AGEN II,RECEPTION JAP,3.0,1.0
 12,Maelys,Onillon,AGEN II,RECEPTION JAP,3.0,1.0
 14,Mado,Bidard,AGEN II,RECEPTION JAP,3.0,1.0
+1,Manon,Marchesin,AGEN II,EN AVANTS,,1.0
+2,Arwen,Lavuia,AGEN II,EN AVANTS,,1.0
+4,Adèle,Lachurie,AGEN II,EN AVANTS,,1.0
+6,Moea,Lickel,AGEN II,EN AVANTS,,1.0
+8,Lise,Llach,AGEN II,EN AVANTS,,1.0
+10,Heloïse,Seletti,AGEN II,EN AVANTS,,3.0
+11,Alessia,Coste,AGEN II,EN AVANTS,,1.0
+12,Maelys,Onillon,AGEN II,EN AVANTS,,1.0
+13,Jeanne,Beheregaray,AGEN II,EN AVANTS,,1.0
+15,Jade,Guindé,AGEN II,EN AVANTS,,1.0
 1,Manon,Marchesin,AGEN II,PENALITE,,2.0
 2,Arwen,Lavuia,AGEN II,PENALITE,,2.0
 4,Adèle,Lachurie,AGEN II,PENALITE,,1.0
@@ -2638,6 +2748,15 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 11,Charlotte,Quilici,CASTRES II,RECEPTION JAP,3.0,3.0
 13,Alexia,Cazalbou,CASTRES II,RECEPTION JAP,3.0,2.0
 23,Keona,Aveilla,CASTRES II,RECEPTION JAP,3.0,1.0
+3,Lisa,Montoux,CASTRES II,EN AVANTS,,1.0
+4,Sofaia,Fono,CASTRES II,EN AVANTS,,1.0
+7,Thiziri-Jades,Touabi,CASTRES II,EN AVANTS,,1.0
+11,Charlotte,Quilici,CASTRES II,EN AVANTS,,4.0
+12,Pauline,Joigneaux,CASTRES II,EN AVANTS,,2.0
+19,Elea,Marzura,CASTRES II,EN AVANTS,,1.0
+20,Jade,Guindé,CASTRES II,EN AVANTS,,3.0
+21,Maelle,Bonne,CASTRES II,EN AVANTS,,1.0
+23,Keona,Aveilla,CASTRES II,EN AVANTS,,1.0
 5,Sofaia,Fono,CASTRES II,PENALITE,,1.0
 7,Thiziri-Jades,Touabi,CASTRES II,PENALITE,,1.0
 8,Agathe,Lacaze,CASTRES II,PENALITE,,2.0
@@ -2837,6 +2956,16 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 11,Zoe,Pages,BAYONNE II,RECEPTION JAP,3.0,1.0
 14,Eva,Sundheimer,BAYONNE II,RECEPTION JAP,3.0,1.0
 15,Alessia,Coste,BAYONNE II,RECEPTION JAP,3.0,1.0
+1,Justine,Pradel,BAYONNE II,EN AVANTS,,1.0
+6,Elsa,Moutinho,BAYONNE II,EN AVANTS,,2.0
+7,Agathe,Lacaze,BAYONNE II,EN AVANTS,,1.0
+8,Zoe,Toustou,BAYONNE II,EN AVANTS,,1.0
+9,Alexia,Cazalbou,BAYONNE II,EN AVANTS,,1.0
+10,Heloïse,Seletti,BAYONNE II,EN AVANTS,,1.0
+11,Zoe,Pages,BAYONNE II,EN AVANTS,,1.0
+13,Jeanne,Beheregaray,BAYONNE II,EN AVANTS,,1.0
+15,Alessia,Coste,BAYONNE II,EN AVANTS,,3.0
+17,Lisa,Montoux,BAYONNE II,EN AVANTS,,1.0
 2,Arwen,Lavuia,BAYONNE II,PENALITE,,2.0
 5,Adèle,Lachurie,BAYONNE II,PENALITE,,3.0
 7,Agathe,Lacaze,BAYONNE II,PENALITE,,1.0
@@ -3048,6 +3177,14 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 1,Justine,Pradel,AURILLAC II,RECEPTION JAP,3.0,1.0
 6,Adèle,Lachurie,AURILLAC II,RECEPTION JAP,3.0,3.0
 10,Pauline,Joigneaux,AURILLAC II,RECEPTION JAP,3.0,1.0
+1,Justine,Pradel,AURILLAC II,EN AVANTS,,1.0
+4,Sofaia,Fono,AURILLAC II,EN AVANTS,,1.0
+5,Candice,Barret,AURILLAC II,EN AVANTS,,1.0
+9,Alice,Bouvet,AURILLAC II,EN AVANTS,,2.0
+11,Lila,Spaarza,AURILLAC II,EN AVANTS,,2.0
+13,Mado,Bidard,AURILLAC II,EN AVANTS,,1.0
+14,Eva,Sundheimer,AURILLAC II,EN AVANTS,,1.0
+21,Loulie,Montoloix,AURILLAC II,EN AVANTS,,1.0
 4,Sofaia,Fono,AURILLAC II,PENALITE,,1.0
 6,Adèle,Lachurie,AURILLAC II,PENALITE,,2.0
 7,Agathe,Lacaze,AURILLAC II,PENALITE,,2.0
@@ -3249,6 +3386,17 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 15,Jade,Guindé,TOULON,RECEPTION JAP,3.0,6.0
 20,Alexia,Cazalbou,TOULON,RECEPTION JAP,3.0,1.0
 22,Zoe,Pages,TOULON,RECEPTION JAP,3.0,1.0
+1,Justine,Pradel,TOULON,EN AVANTS,,1.0
+5,Candice,Barret,TOULON,EN AVANTS,,1.0
+6,Zoe,Toustou,TOULON,EN AVANTS,,1.0
+8,Lise,Llach,TOULON,EN AVANTS,,1.0
+10,Heloïse,Seletti,TOULON,EN AVANTS,,1.0
+12,Maelys,Onillon,TOULON,EN AVANTS,,7.0
+14,Mado,Bidard,TOULON,EN AVANTS,,2.0
+15,Jade,Guindé,TOULON,EN AVANTS,,1.0
+16,Arwen,Lavuia,TOULON,EN AVANTS,,1.0
+20,Alexia,Cazalbou,TOULON,EN AVANTS,,1.0
+22,Zoe,Pages,TOULON,EN AVANTS,,2.0
 2,Manon,Marchesin,TOULON,PENALITE,,2.0
 4,Adèle,Lachurie,TOULON,PENALITE,,1.0
 6,Zoe,Toustou,TOULON,PENALITE,,2.0
@@ -3456,6 +3604,15 @@ Numero,Prenom,Nom,Match,Action,Niveau,Nb_actions
 13,Zoe,Pages,BRIVE,RECEPTION JAP,3.0,1.0
 15,Jade,Guindé,BRIVE,RECEPTION JAP,3.0,2.0
 18,Elsa,Moutinho,BRIVE,RECEPTION JAP,3.0,1.0
+2,Manon,Marchesin,BRIVE,EN AVANTS,,1.0
+3,Malia,Taofifenua,BRIVE,EN AVANTS,,1.0
+4,Adèle,Lachurie,BRIVE,EN AVANTS,,1.0
+5,Candice,Barret,BRIVE,EN AVANTS,,1.0
+6,Moea,Lickel,BRIVE,EN AVANTS,,1.0
+9,Alice,Henaux,BRIVE,EN AVANTS,,1.0
+14,Mado,Bidard,BRIVE,EN AVANTS,,1.0
+21,Pauline,Joigneaux,BRIVE,EN AVANTS,,3.0
+22,Charlotte,Quilici,BRIVE,EN AVANTS,,1.0
 4,Adèle,Lachurie,BRIVE,PENALITE,,1.0
 7,Zoe,Toustou,BRIVE,PENALITE,,1.0
 8,Lise,Llach,BRIVE,PENALITE,,1.0
