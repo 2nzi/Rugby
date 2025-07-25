@@ -10,19 +10,21 @@ from charts import (
     create_performance_heatmap,        # ← NOUVEAU
     create_team_activity_heatmap       # ← NOUVEAU
 )
+from analytics.scoring import get_global_score
 
 def show_dashboard(df):
     """Affiche le tableau de bord principal"""
-        
+
+
     st.divider()
     
     # Métriques générales
     # Configuration des métriques
     metrics_config = [
         {
-            "title": "Moy. note match/joueuse",
-            "value": df['Nb_actions'].sum(),
-            "format": "{:,.0f}"
+            "title": "Moy. note match",
+            "value": get_global_score(df),
+            "format": "{:,.2f}"
         },
         {
             "title": "Total actions",
