@@ -28,10 +28,26 @@ def load_logo():
         return str(logo_path)
     return None
 
-def create_rugby_title(title):
-    """Crée un header titre"""
+def create_rugby_title(left_text="u18 féminine", right_text="Stade Toulousain"):
+    """Crée un header titre avec logo centré"""
     
-    st.markdown(f'<h1 class="main-header">{title}</h1>', unsafe_allow_html=True)
+    # Charger le logo
+    logo_path = load_logo()
+    
+    if logo_path:
+        # Convertir le logo en base64 pour l'affichage
+        logo_base64 = get_base64_of_image(logo_path)
+        
+        st.markdown(f"""
+        <div class="rugby-header-custom">
+            <span class="title-left">{left_text}</span>
+            <img src="data:image/png;base64,{logo_base64}" class="logo-center" alt="Logo Stade Toulousain"/>
+            <span class="title-right">{right_text}</span>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        # Fallback si le logo n'est pas trouvé
+        st.markdown(f'<h1 class="main-header">{left_text} - {right_text}</h1>', unsafe_allow_html=True)
 
 def get_base64_of_image(path):
     """Convertit une image en base64 pour l'affichage"""

@@ -9,8 +9,8 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 # Configuration de la page
 st.set_page_config(
-    page_title="Analyse Rugby - Équipe Féminine",
-    page_icon="🏉",
+    page_title="U18 Féminine - Stade Toulousain",
+    page_icon="./assets/Logo_Stade_Toulousain_Rugby.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -26,25 +26,16 @@ from components.dashboard import show_dashboard
 from components.player_analysis import show_player_analysis
 from components.match_comparison import show_match_comparison
 from components.technical_stats import show_technical_stats
-from utils.data_loader import load_data, get_database_stats
+from utils.data_loader import load_data
 
 def main():
     # Titre principal
-    create_rugby_title("U18 Stade Toulousain Féminine")
+    create_rugby_title("u18 féminine", "Stade Toulousain")
     
-    # Sidebar pour la navigation
-    st.sidebar.title("Navigation")
     
     # Charger les données
     try:
         df = load_data()
-        db_stats = get_database_stats()
-        
-        # Afficher quelques statistiques de base dans la sidebar
-        st.sidebar.markdown("### 📊 Aperçu des données")
-        st.sidebar.metric("Nombre de joueuses", db_stats['nb_joueuses'])
-        st.sidebar.metric("Nombre de matchs", db_stats['nb_matchs'])
-        st.sidebar.metric("Total statistiques", db_stats['nb_stats'])
         
     except Exception as e:
         st.error(f"Erreur lors du chargement des données : {e}")
