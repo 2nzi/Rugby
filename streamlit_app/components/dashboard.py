@@ -17,23 +17,43 @@ def show_dashboard(df):
     st.divider()
     
     # Métriques générales
-    col1, col2, col3, col4 = st.columns(4)
+    # Configuration des métriques
+    metrics_config = [
+        {
+            "title": "Moy. note match/joueuse",
+            "value": df['Nb_actions'].sum(),
+            "format": "{:,.0f}"
+        },
+        {
+            "title": "Total actions",
+            "value": df['Nb_actions'].sum(),
+            "format": "{:,.0f}"
+        },
+        {
+            "title": "Joueuses actives", 
+            "value": df['Nom'].nunique(),
+            "format": "{}"
+        },
+        {
+            "title": "Matchs analysés",
+            "value": df['Match'].nunique(), 
+            "format": "{}"
+        },
+        {
+            "title": "Moy. actions/joueuse",
+            "value": df.groupby(['Prenom', 'Nom'])['Nb_actions'].sum().mean(),
+            "format": "{:.0f}"
+        }
+    ]
     
-    with col1:
-        total_actions = df['Nb_actions'].sum()
-        st.metric("Total actions", f"{total_actions:,.0f}")
+    # Création des colonnes dynamiquement
+    cols = st.columns(len(metrics_config))
     
-    with col2:
-        nb_joueuses = df['Nom'].nunique()
-        st.metric("Joueuses actives", nb_joueuses)
-    
-    with col3:
-        nb_matchs = df['Match'].nunique()
-        st.metric("Matchs analysés", nb_matchs)
-    
-    with col4:
-        avg_actions = df.groupby(['Prenom', 'Nom'])['Nb_actions'].sum().mean()
-        st.metric("Moy. actions/joueuse", f"{avg_actions:.0f}")
+    # Affichage des métriques avec une boucle
+    for i, metric in enumerate(metrics_config):
+        with cols[i]:
+            formatted_value = metric["format"].format(metric["value"])
+            st.metric(metric["title"], formatted_value)
     
     st.divider()
     
