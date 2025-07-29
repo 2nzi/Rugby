@@ -133,19 +133,49 @@ footer {
    BOUTONS PERSONNALISÉS
    =============================== */
 
+/* Style par défaut pour tous les boutons (transparent) */
 .stButton > button {
-    background: linear-gradient(135deg, #1f4e79 0%, #2d5a8b 100%);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 0.5rem 2rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    background: transparent !important;
+    color: black !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: normal !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
 }
 
 .stButton > button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(31, 78, 121, 0.3);
+    background: rgba(40, 40, 40, 0.15) !important;
+    border-radius: 10px !important;
+    transform: translateX(5px) !important;
+}
+
+/* Style pour le bouton actif (page courante) - seulement quand il est focus/active */
+.stButton > button:focus,
+.stButton > button:active {
+    background: linear-gradient(135deg, #000000 0%, #252525 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: bold !important;
+    box-shadow: 0 2px 8px rgba(204, 12, 19, 0.3) !important;
+}
+
+/* Supprimer le style rouge par défaut pour tous les boutons */
+.stButton > button {
+    background: transparent !important;
+    color: black !important;
+}
+
+/* Style spécial pour le bouton de la page courante via session state */
+.stButton > button[data-active="true"] {
+    background: linear-gradient(135deg, #000000 0%, #252525 100%) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-weight: bold !important;
+    box-shadow: 0 2px 8px rgba(204, 12, 19, 0.3) !important;
 }
 
 /* ===============================

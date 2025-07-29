@@ -29,39 +29,52 @@ from components.technical_stats import show_technical_stats
 from utils.data_loader import load_data
 from analytics.scoring import get_global_score
 
+def create_nav_button(text, page_key, current_page):
+    """Crée un bouton de navigation avec style actif si nécessaire"""
+    if current_page == page_key:
+        st.sidebar.markdown(f"""
+        <div style="background: linear-gradient(135deg, #000000 50%, #252525 100%); 
+                    color: white; padding: 0.5rem 1rem; border-radius: 10px; 
+                    font-weight: bold; margin-bottom: 0.5rem;">
+            {text}
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        if st.sidebar.button(text, key=f"nav_{page_key}"):
+            st.session_state.page = page_key
+            st.rerun()
+
 def main():
     # Titre principal
     create_rugby_title("u18 féminine", "Stade Toulousain")
     
-    
     # Charger les données
     try:
         df = load_data()
-        
     except Exception as e:
         st.error(f"Erreur lors du chargement des données : {e}")
         st.stop()
     
-    # Menu de navigation
-    page = st.sidebar.selectbox(
-        "Choisir une analyse",
-        [
-            "🏠 Tableau de bord",
-            "👤 Analyse par joueuse", 
-            "⚔️ Comparaison des matchs",
-            "📈 Statistiques techniques"
-        ]
-    )
-
+    # Initialiser la page par défaut
+    if 'page' not in st.session_state:
+        st.session_state.page = "dashboard"
+    
+    # Navigation optimisée
+    current_page = st.session_state.page
+    
+    create_nav_button("Tableau de bord", "dashboard", current_page)
+    create_nav_button("Analyse par joueuse", "player", current_page)
+    create_nav_button("Comparaison des matchs", "match", current_page)
+    create_nav_button("Statistiques techniques", "stats", current_page)
 
     # Affichage des pages
-    if page == "🏠 Tableau de bord":
+    if st.session_state.page == "dashboard":
         show_dashboard(df)
-    elif page == "👤 Analyse par joueuse":
+    elif st.session_state.page == "player":
         show_player_analysis(df)
-    elif page == "⚔️ Comparaison des matchs":
+    elif st.session_state.page == "match":
         show_match_comparison(df)
-    elif page == "📈 Statistiques techniques":
+    elif st.session_state.page == "stats":
         show_technical_stats(df)
 
 if __name__ == "__main__":

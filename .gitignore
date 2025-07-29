@@ -11,3 +11,5 @@ ENV/
 .vscode/
 *.xlsx
 !data/*.xlsx
+
+/component-template/
