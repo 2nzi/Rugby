@@ -8,7 +8,8 @@ from .player_charts import (
     create_player_actions_pie,
     create_player_level_distribution,
     create_performance_heatmap,         # ← NOUVEAU
-    create_team_activity_heatmap        # ← NOUVEAU
+    create_team_activity_heatmap,        # ← NOUVEAU
+    create_performance_comparison_chart  # ← NOUVEAU
 )
 
 from .match_charts import (
