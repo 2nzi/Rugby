@@ -17,14 +17,10 @@ def show_dashboard(df):
     """Affiche le tableau de bord principal"""
 
 
-    fig = create_performance_comparison_chart(df)
-    st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
     
     # Métriques générales
-    # Configuration des métriques
-    # st.dataframe(df)
 
     metrics_config = [
         {
@@ -62,9 +58,15 @@ def show_dashboard(df):
         with cols[i]:
             formatted_value = metric["format"].format(metric["value"])
             st.metric(metric["title"], formatted_value)
+
     
     st.divider()
     
+
+
+    fig = create_performance_comparison_chart(df)
+    st.plotly_chart(fig, use_container_width=True)
+
     # Graphiques principaux
     col1, col2 = st.columns(2)
     
@@ -79,19 +81,19 @@ def show_dashboard(df):
     st.divider()
     
     # Graphiques pleine largeur
-    col1, col2 = st.columns(2)
+    # col1, col2 = st.columns(2)
     
-    with col1:
-        fig = create_matches_activity_chart(df)
-        st.plotly_chart(fig, use_container_width=True)
+    # with col1:
+    #     fig = create_matches_activity_chart(df)
+    #     st.plotly_chart(fig, use_container_width=True)
     
-    with col2:
-        fig = create_team_activity_heatmap(df)
-        st.plotly_chart(fig, use_container_width=True)
+    # with col2:
+    #     fig = create_team_activity_heatmap(df)
+    #     st.plotly_chart(fig, use_container_width=True)
     
-    st.divider()
+    # st.divider()
 
-    fig = create_performance_heatmap(df, n_players=15)
-    st.plotly_chart(fig, use_container_width=True)
+    # fig = create_performance_heatmap(df, n_players=15)
+    # st.plotly_chart(fig, use_container_width=True)
     
     st.divider()
