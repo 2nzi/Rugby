@@ -69,7 +69,7 @@ def show_dashboard(df):
     col1, col2 = st.columns(2)
     
     with col1:
-        fig = create_top_players_chart(df, n_players=10)
+        fig = create_top_players_chart(df, n_players=15)
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:

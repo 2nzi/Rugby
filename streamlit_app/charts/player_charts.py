@@ -4,21 +4,24 @@ import plotly.graph_objects as go
 from .config import COLORS, COLORSCALE, COLORSCALE_HEATMAP, BASE_LAYOUT, apply_stade_style
 
 def create_top_players_chart(df, n_players=10):
-    """Graphique complet du top des joueuses avec style intégré"""
+    """Graphique complet du top des joueuses basé sur les notes moyennes"""
     
-    # Préparer les données
-    top_players = df.groupby(['Prenom', 'Nom'])['Nb_actions'].sum().reset_index()
+    from analytics.scoring import calculate_player_scoring
+    
+    # Calculer les notes moyennes par joueuse
+    scoring_data = calculate_player_scoring(df)['by_player_match']
+    top_players = scoring_data.groupby(['Prenom', 'Nom'])['note_match_joueuse'].mean().reset_index()
     top_players['Nom_complet'] = top_players['Prenom'] + ' ' + top_players['Nom']
-    top_players = top_players.nlargest(n_players, 'Nb_actions')
+    top_players = top_players.nlargest(n_players, 'note_match_joueuse')
     
     # Créer le graphique AVEC son style
     fig = px.bar(
         top_players,
-        x='Nb_actions',
+        x='note_match_joueuse',
         y='Nom_complet',
         orientation='h',
-        title=f"Top {n_players} des joueuses",
-        color='Nb_actions',
+        title=f"Top {n_players} des joueuses par note moyenne",
+        color='note_match_joueuse',
         color_continuous_scale=COLORSCALE
     )
     
@@ -33,7 +36,7 @@ def create_top_players_chart(df, n_players=10):
             'tickfont': dict(color=COLORS['secondary'], size=12)
         },
         xaxis={
-            'title': 'Nombre d\'actions',
+            'title': 'Note moyenne',
             'tickfont': dict(color=COLORS['secondary'], size=11)
         },
         title={

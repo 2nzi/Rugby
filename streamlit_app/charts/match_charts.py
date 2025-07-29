@@ -46,17 +46,32 @@ def create_matches_activity_chart(df):
     return fig
 
 def create_actions_distribution_chart(df):
-    """Distribution des types d'actions"""
+    """Distribution des types d'actions avec dégradé basé sur l'importance"""
     
     action_stats = df.groupby('Action')['Nb_actions'].sum().reset_index()
+    
+    # Calculer le pourcentage pour chaque action
+    total_actions = action_stats['Nb_actions'].sum()
+    action_stats['Pourcentage'] = (action_stats['Nb_actions'] / total_actions) * 100
+    
+    # Trier par importance (pourcentage décroissant)
+    action_stats = action_stats.sort_values('Pourcentage', ascending=False)
+    
+    # Créer un dégradé de couleurs basé sur l'importance
+    n_actions = len(action_stats)
+    colors = []
+    for i in range(n_actions):
+        # Dégradé de noir (moins important) à rouge (plus important)
+        ratio = i / (n_actions - 1) if n_actions > 1 else 0
+        color = f"rgba({204 * ratio + 0 * (1-ratio):.0f}, {12 * ratio + 0 * (1-ratio):.0f}, {19 * ratio + 0 * (1-ratio):.0f}, 1)"
+        colors.append(color)
     
     fig = px.pie(
         action_stats,
         values='Nb_actions',
         names='Action',
         title="Répartition des types d'actions",
-        color_discrete_sequence=[COLORS['primary'], COLORS['secondary'], 
-                               COLORS['gray'], COLORS['light_red']]
+        color_discrete_sequence=colors
     )
     
     fig.update_layout(
@@ -66,6 +81,11 @@ def create_actions_distribution_chart(df):
             'x': 0.4,
             'xanchor': 'center'
         }
+    )
+    
+    # Ajouter des bordures blanches entre chaque part
+    fig.update_traces(
+        marker=dict(line=dict(color='white', width=2))
     )
     
     return fig
