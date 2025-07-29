@@ -31,15 +31,25 @@ def show_dashboard(df):
     # Créer un graphique avec deux axes Y
     fig = go.Figure()
     
-    # Ajouter le graphique en barres sur l'axe Y gauche
-    for action in avg_scores['Action'].unique():
+    # Ajouter le graphique en barres sur l'axe Y gauche avec dégradé de couleurs
+    from charts.config import COLORS
+    
+    actions = avg_scores['Action'].unique()
+    n_actions = len(actions)
+    
+    for i, action in enumerate(actions):
         action_data = avg_scores[avg_scores['Action'] == action]
+        # Calculer la couleur avec un dégradé de secondary (noir) à primary (rouge)
+        ratio = i / (n_actions - 1) if n_actions > 1 else 0
+        color = f"rgba({204 * ratio + 0 * (1-ratio):.0f}, {12 * ratio + 0 * (1-ratio):.0f}, {19 * ratio + 0 * (1-ratio):.0f}, 1)"
+        
         fig.add_trace(
             go.Bar(
                 x=action_data['Match'],
                 y=action_data['note_match_joueuse'],
                 name=action,
-                yaxis='y'
+                yaxis='y',
+                marker_color=color
             )
         )
     
@@ -49,9 +59,10 @@ def show_dashboard(df):
         go.Scatter(
             x=match_sum['Match'],
             y=match_sum['nb_total_actions'],
-            name='Moyenne générale',
+            name='Nombre total d\'actions',
             yaxis='y2',
-            line=dict(color='black', width=3),
+            line=dict(color='#226D68', width=3),
+            marker=dict(color='#76CDCD', size=8),
             mode='lines+markers'
         )
     )
