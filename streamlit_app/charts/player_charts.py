@@ -437,14 +437,14 @@ def create_performance_violin_chart(df):
     # Calculer les données de scoring
     scoring_data = calculate_player_scoring(df)['by_action']
     
-    # Créer le violin plot
+        # Créer le violin plot
     fig = px.violin(
         scoring_data, 
         x="Match", 
         y="note_match_joueuse", 
         box=True, 
         color_discrete_sequence=[COLORS['primary'], COLORS['secondary'], COLORS['gray']]
-           )
+    )
     
     # Appliquer le style Stade Toulousain
     fig.update_layout(
@@ -461,7 +461,7 @@ def create_performance_violin_chart(df):
         },
     )
     
-    # Personnaliser le hover et la boîte
+    # Personnaliser le hover, la boîte et la largeur des violins
     fig.update_traces(
         hoverlabel=dict(
             bgcolor=COLORS['primary'],
@@ -474,7 +474,45 @@ def create_performance_violin_chart(df):
         ),
         line=dict(
             color=COLORS['secondary']
+        ),
+        width=1  # Contrôler la largeur des violins (0.1 à 1.0)
+    )
+    
+    # Ajouter les meilleures joueuses par match
+    best_scores_with_names = scoring_data.loc[scoring_data.groupby(['Match'])['note_match_joueuse'].idxmax()][['Match', 'Prenom', 'Nom', 'note_match_joueuse']].reset_index(drop=True)
+    
+    # Ajouter des points pour les meilleures notes
+    fig.add_trace(
+        go.Scatter(
+            x=best_scores_with_names['Match'],
+            y=best_scores_with_names['note_match_joueuse'],
+            mode='markers',
+            marker=dict(
+                color='#ffffff',  # Blanc pour les meilleures notes
+                size=10,
+                line=dict(color='#384454', width=2)  # Bordure noire pour plus de contraste
+            ),
+            name='Meilleure joueuse par match',
+            showlegend=True
         )
     )
+    
+    # Ajouter les noms des meilleures joueuses avec des annotations
+    for _, row in best_scores_with_names.iterrows():
+        fig.add_annotation(
+            x=row['Match'],
+            y=row['note_match_joueuse'],
+            text=row['Nom'],
+            showarrow=False,
+            yshift=30,  # Déplacer le texte plus haut
+            font=dict(
+                size=12,
+                color='#000000',
+                family='Arial Black'
+            ),
+            bgcolor='rgba(255, 255, 255, 0.8)',  # Fond blanc semi-transparent
+            # bordercolor='#000000',
+            borderwidth=1
+        )
     
     return fig
