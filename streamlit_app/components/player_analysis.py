@@ -68,9 +68,18 @@ def show_player_analysis(df):
         }
     ]
 
+    active_glow_color = "#ffffff"
     result = image_carousel(
         images=joueurs_images,
-        background_color='white'
+        selected_image=None,
+        background_color="#ffffff",
+        active_border_color="#000000",
+        active_glow_color=f"rgba({0}, {0}, {0}, 0.7)",
+        # active_glow_color="#000000",
+        fallback_background="#ffffff",
+        fallback_gradient_end="#ffffff",
+        text_color="#000000",
+        arrow_color="#31333f",
     )
 
     st.header("👤 Analyse des joueuses")
