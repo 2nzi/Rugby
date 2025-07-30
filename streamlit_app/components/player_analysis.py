@@ -68,7 +68,17 @@ def show_player_analysis(df):
         }
     ]
 
-    active_glow_color = "#ffffff"
+    # Créer un dictionnaire avec les noms uniques des joueurs au bon format
+    joueurs_images = [
+        {
+            "name": nom,
+            "url": image_to_base64(r"C:\Users\antoi\Documents\Work_Learn\Rugby\data\player_images\MT.jpg")  # Image par défaut
+            # "url": "" # Image par défaut
+        }
+        for nom in sorted(df['Nom'].unique())
+    ]
+    st.write(f"Nombre de joueurs: {len(joueurs_images)}")
+
     result = image_carousel(
         images=joueurs_images,
         selected_image=None,
