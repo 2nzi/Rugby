@@ -55,26 +55,29 @@ def main():
         st.error(f"Erreur lors du chargement des données : {e}")
         st.stop()
     
-    # Initialiser la page par défaut
-    if 'page' not in st.session_state:
-        st.session_state.page = "dashboard"
-    
-    # Navigation optimisée
-    current_page = st.session_state.page
-    
-    create_nav_button("Tableau de bord", "dashboard", current_page)
-    create_nav_button("Analyse par joueuse", "player", current_page)
-    create_nav_button("Comparaison des matchs", "match", current_page)
-    create_nav_button("Statistiques techniques", "stats", current_page)
 
+    from streamlit_option_menu import option_menu
+
+    with st.sidebar:
+        selected = option_menu( None, 
+                ["Tableau de bord", 'Analyse par joueuse', 'Comparaison des matchs', 'Statistiques techniques'], 
+                icons=None, default_index=1,
+                menu_icon="cast",
+                styles={
+                    "container": {"padding": "0!important", "background-color": "#fafafa"},
+                    "icon": {"display": "None"}, 
+                    "nav-link": {"font-size": "16px", "text-align": "left", "margin":"3px", "--hover-color": "#eee"},
+                    "nav-link-selected": {"background-color": "#000000"},
+                }
+            )
     # Affichage des pages
-    if st.session_state.page == "dashboard":
+    if selected == "Tableau de bord":
         show_dashboard(df)
-    elif st.session_state.page == "player":
+    elif selected == "Analyse par joueuse":
         show_player_analysis(df)
-    elif st.session_state.page == "match":
+    elif selected == "Comparaison des matchs":
         show_match_comparison(df)
-    elif st.session_state.page == "stats":
+    elif selected == "Statistiques techniques":
         show_technical_stats(df)
 
 if __name__ == "__main__":

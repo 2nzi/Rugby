@@ -493,7 +493,7 @@ def create_performance_violin_chart(df):
                 line=dict(color='#384454', width=2)  # Bordure noire pour plus de contraste
             ),
             name='Meilleure joueuse par match',
-            showlegend=True
+            showlegend=False
         )
     )
     
