@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import plotly.express as px 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from charts import (
@@ -9,14 +9,13 @@ from charts import (
     create_matches_activity_chart,
     create_performance_heatmap,        # ← NOUVEAU
     create_team_activity_heatmap,       # ← NOUVEAU
-    create_performance_comparison_chart  # ← NOUVEAU
+    create_performance_comparison_chart,  # ← NOUVEAU
+    create_performance_violin_chart
 )
 from analytics.scoring import *
 
 def show_dashboard(df):
     """Affiche le tableau de bord principal"""
-
-
 
     st.divider()
     
@@ -64,7 +63,8 @@ def show_dashboard(df):
     
 
 
-    fig = create_performance_comparison_chart(df)
+    fig = create_performance_violin_chart(df)
+    # fig = create_performance_comparison_chart(df)
     st.plotly_chart(fig, use_container_width=True)
 
     # Graphiques principaux
@@ -77,9 +77,7 @@ def show_dashboard(df):
     with col2:
         fig = create_actions_distribution_chart(df)
         st.plotly_chart(fig, use_container_width=True)
-    
-    st.divider()
-    
+        
     # Graphiques pleine largeur
     # col1, col2 = st.columns(2)
     
@@ -96,4 +94,3 @@ def show_dashboard(df):
     # fig = create_performance_heatmap(df, n_players=15)
     # st.plotly_chart(fig, use_container_width=True)
     
-    st.divider()

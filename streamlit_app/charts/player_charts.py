@@ -361,7 +361,7 @@ def create_performance_comparison_chart(df):
     # Calculer la plage dynamique : min note globale -10 à max note globale +10
     min_note = scoring_data['note_match_joueuse'].min()
     max_note = scoring_data['note_match_joueuse'].max()
-    y_range = [min_note - 10, max_note + 10]
+    y_range = [50, 77]
     
     # Créer un graphique avec deux axes Y
     fig = go.Figure()
@@ -386,53 +386,20 @@ def create_performance_comparison_chart(df):
             )
         )
     
-    # Ajouter un graphique en ligne sur l'axe Y droit (nombre d'actions)
-    match_sum = scoring_data.groupby(['Match'])['nb_total_actions'].sum().reset_index()
-    fig.add_trace(
-        go.Scatter(
-            x=match_sum['Match'],
-            y=match_sum['nb_total_actions'],
-            name='Nombre total d\'actions',
-            yaxis='y2',
-            line=dict(color='#226D68', width=3),
-            marker=dict(color='#76CDCD', size=8),
-            mode='lines+markers'
-        )
-    )
-    
-    # Ajouter les meilleures notes par match
+    # Ajouter les meilleures notes par match sur l'axe Y droit
     best_scores_with_names = scoring_data.loc[scoring_data.groupby(['Match'])['note_match_joueuse'].idxmax()][['Match', 'Prenom', 'Nom', 'note_match_joueuse']].reset_index(drop=True)
     fig.add_trace(
         go.Scatter(
             x=best_scores_with_names['Match'],
             y=best_scores_with_names['note_match_joueuse'],
             name='Meilleure note par match',
-            yaxis='y',
+            yaxis='y2',
             line=dict(width=0),
             marker=dict(color='#2E8B57', size=12),
             mode='markers+text',
             text=best_scores_with_names['Prenom'] + ' ' + best_scores_with_names['Nom'],
             textposition='top center',
-            textfont=dict(size=11, color='#2E8B57'),
-            hoverinfo='skip'
-        )
-    )
-    
-    # Ajouter les moins bonnes notes par match
-    worst_scores_with_names = scoring_data.loc[scoring_data.groupby(['Match'])['note_match_joueuse'].idxmin()][['Match', 'Prenom', 'Nom', 'note_match_joueuse']].reset_index(drop=True)
-    fig.add_trace(
-        go.Scatter(
-            x=worst_scores_with_names['Match'],
-            y=worst_scores_with_names['note_match_joueuse'],
-            name='Moins bonne note par match',
-            yaxis='y',
-            line=dict(width=0),
-            marker=dict(color='#FF8C00', size=12),
-            mode='markers+text',
-            text=worst_scores_with_names['Prenom'] + ' ' + worst_scores_with_names['Nom'],
-            textposition='bottom center',
-            textfont=dict(size=11, color='#FF8C00'),
-            hoverinfo='skip'
+            textfont=dict(size=11, color='#2E8B57')
         )
     )
     
@@ -451,12 +418,63 @@ def create_performance_comparison_chart(df):
             side='left'
         ),
         yaxis2=dict(
-            title="Nombre d'actions dans le match",
+            title="Meilleure note par match",
+            range=[50, 110],
             side='right',
             overlaying='y'
         ),
         barmode='group',
         **BASE_LAYOUT
+    )
+    
+    return fig
+
+def create_performance_violin_chart(df):
+    """Graphique violin plot pour la distribution des notes par match"""
+    
+    from analytics.scoring import calculate_player_scoring
+    
+    # Calculer les données de scoring
+    scoring_data = calculate_player_scoring(df)['by_action']
+    
+    # Créer le violin plot
+    fig = px.violin(
+        scoring_data, 
+        x="Match", 
+        y="note_match_joueuse", 
+        box=True, 
+        color_discrete_sequence=[COLORS['primary'], COLORS['secondary'], COLORS['gray']]
+           )
+    
+    # Appliquer le style Stade Toulousain
+    fig.update_layout(
+        **BASE_LAYOUT,
+        height=500,
+        xaxis={
+            'title': 'Matchs',
+            'tickfont': dict(color=COLORS['secondary'], size=11),
+            'tickangle': 45
+        },
+        yaxis={
+            'title': 'Notes',
+            'tickfont': dict(color=COLORS['secondary'], size=11)
+        },
+    )
+    
+    # Personnaliser le hover et la boîte
+    fig.update_traces(
+        hoverlabel=dict(
+            bgcolor=COLORS['primary'],
+            font_color='white',
+            font_size=12
+        ),
+        box=dict(
+            fillcolor=COLORS['primary'],  # Couleur de remplissage de la boîte
+            # line=dict(color=COLORS['primary'])  # Couleur de la bordure de la boîte
+        ),
+        line=dict(
+            color=COLORS['secondary']
+        )
     )
     
     return fig

@@ -71,13 +71,14 @@ def show_player_analysis(df):
     # Créer un dictionnaire avec les noms uniques des joueurs au bon format
     joueurs_images = [
         {
-            "name": nom,
-            "url": image_to_base64(r"C:\Users\antoi\Documents\Work_Learn\Rugby\data\player_images\MT.jpg")  # Image par défaut
-            # "url": "" # Image par défaut
+            "name": f"{row['Prenom']} {row['Nom']}",
+            # "url": image_to_base64(r"C:\Users\antoi\Documents\Work_Learn\Rugby\data\player_images\MT.jpg")  # Image par défaut
+            "url": "" # Image par défaut
         }
-        for nom in sorted(df['Nom'].unique())
+        for _, row in sorted(df[['Nom', 'Prenom']].drop_duplicates().iterrows(), key=lambda x: (x[1]['Nom'], x[1]['Prenom']))
     ]
-    st.write(f"Nombre de joueurs: {len(joueurs_images)}")
+
+
 
     result = image_carousel(
         images=joueurs_images,
@@ -92,13 +93,11 @@ def show_player_analysis(df):
         arrow_color="#31333f",
     )
 
-    st.header("👤 Analyse des joueuses")
-
+    # st.write(result)
 
     
     # Liste des joueuses
-    players = sorted(df['Nom'].unique())
-    selected_player = st.selectbox("Choisir une joueuse", players)
+    selected_player = result['selected_image'].split(" ")[1]
     
     if selected_player:
         # Filtrer les données pour la joueuse sélectionnée
